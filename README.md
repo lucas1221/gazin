@@ -55,6 +55,11 @@ Inicializar o XAMPP: Ativar as opções: APACHE e MySQL apenas
 * Deve ser utilizado para ser importado ao XAMPP no PHPMyAdmin
 
 * Por fim: 
+Acessar o diretório do backend
+```bash
+cd caminho do backend../backend/ 
+``` 
+Executar com: 
 
 ```bash
 nodemon server.js
