@@ -11,7 +11,7 @@ Para o Desenvolvimento do Backend (API REST JSON) foi escolhida a seguinte STACK
 * Express 
 * MySQL ( Por meio do pacote XAMPP )
 * Sequelize ( É uma ORM que facilita demais a manipulação/transações SQL )
-* Nodemon ( Ajudou no desenvolvimento do servidor ( evitando ter que derrubar o mesmo a cada alteração feita ))
+* Nodemon: Ajudou no desenvolvimento do servidor (evitando ter que derrubar o mesmo a cada alteração feita)
 
 O Servidor está configurado na porta 
 
