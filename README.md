@@ -37,7 +37,7 @@ Para a inicialização da API, é necessário:
 Após a instalação deles:
 * Clonar o repositório: 
 ```bash
-git clone https://github.com/lucas1221/gazinChallenge.git
+git clone https://github.com/lucas1221/gazin.git
 ```
 * Instalação de Dependência: 
 ```bash
