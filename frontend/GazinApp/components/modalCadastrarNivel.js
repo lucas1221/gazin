@@ -3,12 +3,28 @@ import {Modal, TouchableOpacity, View, Text} from 'react-native';
 import { TextInput, DefaultTheme } from "react-native-paper";
 import React, { useContext } from 'react';
 import { Context } from '../services/Context';
+import instancia from "../services/api";
 
 function ModalCadastrarNivel() {
      // Para o Modal Cadastro de Níveis
      const {modalNiveisVisible, setModalCadastrarNivelVisible} = useContext(Context);
      const {textLevel, setTextLevel} = useContext(Context);
-  
+     const handlePost = async () => {
+        instancia
+        .post('/api/niveis/addNiveis',
+            {
+                idniveis: null,
+                nivel: textLevel,
+            })
+            .then((response) => {
+                console.log("POST Response")
+                console.log(response.data);
+                setModalCadastrarNivelVisible(false);
+            })
+            .catch(function (error) {
+                console.log("Erro ao Cadastrar");
+            });
+         };
     return(
         <Modal
             animationType="fade"
@@ -47,7 +63,7 @@ function ModalCadastrarNivel() {
                         <TouchableOpacity style={styles.buttonCancelar} onPress={() => setModalCadastrarNivelVisible(false)}>
                             <Text style={styles.textStyle}>Cancelar</Text>
                             </TouchableOpacity>
-                        <TouchableOpacity style={styles.buttonCadastrar}>
+                        <TouchableOpacity style={styles.buttonCadastrar} onPress={handlePost}>
                             <Text style={styles.textStyle}>Cadastrar</Text>
                             </TouchableOpacity>
                     </View>

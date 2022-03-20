@@ -3,6 +3,7 @@ import {Modal, TouchableOpacity, View, Text} from 'react-native';
 import { TextInput, DefaultTheme } from "react-native-paper";
 import React, { useContext } from 'react';
 import { Context } from '../services/Context';
+import instancia from "../services/api";
 
 function ModalEditarDev() {
    // States para os Modais de Editar e Excluir Desenvolvedores
@@ -14,7 +15,34 @@ function ModalEditarDev() {
    const {textEditarDataNascimento, setTextEditarDataNascimento} = useContext(Context);
    const {textEditarHobby, setTextEditarHobby} = useContext(Context);
    const {textEditarSexo,setTextEditarSexo} = useContext(Context);
-    return(
+   const {idEditarDev} = useContext(Context);
+   
+   
+
+    const handlePut = async (idEditarDev) => {
+    const id = idEditarDev;
+    instancia
+    .put(`/api/desenvolvedores/${id}`,
+        {
+            devnivel: textEditarNivel,
+            nome: textEditarNome,
+            sexo: textEditarSexo,
+            datadenascimento: textEditarDataNascimento,
+            hobby: textEditarHobby,
+            idade: textEditarIdade
+        })
+        .then((response) => {
+            console.log("PUT Response")
+            console.log(response.data);
+            setModalEditarDevVisible(false);
+            instancia.get('/api/desenvolvedores/allDevs');  
+        })
+        .catch(function (error) {
+            console.log("Erro ao Atualizar");
+        });
+     };
+    
+     return(
         <Modal
             animationType="fade"
             statusBarTranslucent={true}
@@ -105,7 +133,7 @@ function ModalEditarDev() {
                             <TouchableOpacity style={styles.buttonCancelar} onPress={() => setModalEditarDevVisible(false)}>
                                 <Text style={styles.textStyle}>Cancelar</Text>
                                 </TouchableOpacity>
-                            <TouchableOpacity style={styles.buttonCadastrar}>
+                            <TouchableOpacity style={styles.buttonCadastrar} onPress={() => handlePut(idEditarDev)}>
                                 <Text style={styles.textStyle}>Atualizar</Text>
                                 </TouchableOpacity>
                         </View>

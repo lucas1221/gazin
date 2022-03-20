@@ -3,11 +3,33 @@ import {Modal, TouchableOpacity, View, Text} from 'react-native';
 import { TextInput, DefaultTheme } from "react-native-paper";
 import React, { useContext } from 'react';
 import { Context } from '../services/Context';
+import instancia from "../services/api";
 
 function ModalEditarNivel() {
   // Editar Nivel
   const {modalEditarLevelVisible, setModalEditarLevelVisible} = useContext(Context);
   const {textEditarLevel, setTextEditarLevel} = useContext(Context);
+  const {idEditarLevel} = useContext(Context);
+  // Editar Niveis : PUT 
+  const handleEditarLevel = async (idEditarLevel) => {
+    const id = idEditarLevel;
+    instancia
+    .put(`/api/niveis/${id}`,
+        {
+           nivel: textEditarLevel
+        })
+        .then((response) => {
+            console.log("PUT Response")
+            console.log(response.data);
+            setModalEditarLevelVisible(false);
+            instancia.get('/api/niveis/allNiveis');  
+        })
+        .catch(function (error) {
+            console.log("Erro ao Atualizar");
+        });
+     };
+
+
     return(
         <Modal
             animationType="fade"
@@ -44,7 +66,7 @@ function ModalEditarNivel() {
                         <TouchableOpacity style={styles.buttonCancelar} onPress={() => setModalEditarLevelVisible(false)}>
                             <Text style={styles.textStyle}>Cancelar</Text>
                             </TouchableOpacity>
-                        <TouchableOpacity style={styles.buttonCadastrar}>
+                        <TouchableOpacity style={styles.buttonCadastrar} onPress={() => handleEditarLevel(idEditarLevel)}>
                             <Text style={styles.textStyle}>Atualizar</Text>
                             </TouchableOpacity>
                     </View>

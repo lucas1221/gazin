@@ -2,10 +2,28 @@ import styles from "../screens/Styles";
 import {Modal, TouchableOpacity, View, Text} from 'react-native';
 import React, { useContext } from 'react';
 import { Context } from '../services/Context';
+import instancia from "../services/api";
 
 function ModalExcluirNivel() {
      
     const {modalExcluirLevelVisible, setModalExcluirLevelVisible} = useContext(Context);
+    const {idExcluirLevel} = useContext(Context);
+
+    const handleDeleteLevels = async (idExcluirLevel) => {   
+        const id = idExcluirLevel;
+        instancia
+       .delete(`/api/niveis/${id}`)        
+       .then((response) => {
+               console.log("Delete do Level Response")
+               console.log(response.data);
+               setModalExcluirLevelVisible(false);
+               instancia.get('/api/niveis/allNiveis');
+               alert("Nivel Excluido com Sucesso!")
+           })
+           .catch(function (error) {
+               console.log("Erro ao Deletar");
+           });
+       };
     return(
         <Modal
             animationType="fade"
@@ -26,13 +44,13 @@ function ModalExcluirNivel() {
                     onPress={() => {}} 
                     activeOpacity={10}
                 >
-                    <Text style={styles.modalText}>Deseja Realmente Excluir esse Desenvolvedor ?</Text>
+                    <Text style={styles.modalText}>Deseja Realmente Excluir esse Nível ?</Text>
                     
                     <View style={styles.BotoesFormularios}>
                         <TouchableOpacity style={styles.buttonCancelar} onPress={() => setModalExcluirLevelVisible(false)}>
                             <Text style={styles.textStyle}>Não</Text>
                             </TouchableOpacity>
-                        <TouchableOpacity style={styles.buttonCadastrar}>
+                        <TouchableOpacity style={styles.buttonCadastrar} onPress={() => handleDeleteLevels(idExcluirLevel)}>
                             <Text style={styles.textStyle}>Sim</Text>
                             </TouchableOpacity>
                     </View>

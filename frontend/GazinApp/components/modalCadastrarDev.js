@@ -3,6 +3,7 @@ import {Modal, TouchableOpacity, View, Text} from 'react-native';
 import { TextInput, DefaultTheme } from "react-native-paper";
 import React, { useContext } from 'react';
 import { Context } from '../services/Context';
+import instancia from "../services/api";
 
 function ModalCadastrarDev() {
     // Para o Modal Cadastro de Devs
@@ -13,6 +14,30 @@ function ModalCadastrarDev() {
     const {textDataNascimento, setTextDataNascimento} = useContext(Context);
     const {textHobby, setTextHobby} = useContext(Context);
     const {textSexo,setTextSexo} = useContext(Context);
+    // POST Cadastro de Dev
+    const handlePost = async () => {
+        instancia
+        .post('/api/desenvolvedores/addDevs',
+            {
+                id: null,
+                devnivel: textNivel,
+                nome: textNome,
+                sexo: textSexo,
+                datadenascimento: textDataNascimento,
+                hobby: textHobby,
+                idade: textIdade
+            })
+            .then((response) => {
+                console.log("POST Response")
+                console.log(response.data);
+                setModalCadastrarDevVisible(false);
+                instancia.get('/api/desenvolvedores/allDevs');
+            })
+            .catch(function (error) {
+                console.log("Erro ao Cadastrar");
+            });
+         };
+        
     return(
         <Modal
             animationType="fade"
@@ -104,7 +129,7 @@ function ModalCadastrarDev() {
                         <TouchableOpacity style={styles.buttonCancelar} onPress={() => setModalCadastrarDevVisible(false)}>
                             <Text style={styles.textStyle}>Cancelar</Text>
                             </TouchableOpacity>
-                        <TouchableOpacity style={styles.buttonCadastrar}>
+                        <TouchableOpacity style={styles.buttonCadastrar} onPress={handlePost}>
                             <Text style={styles.textStyle}>Cadastrar</Text>
                             </TouchableOpacity>
                     </View>
