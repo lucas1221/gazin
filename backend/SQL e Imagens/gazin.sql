@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 18-Mar-2022 às 04:26
+-- Tempo de geração: 20-Mar-2022 às 02:28
 -- Versão do servidor: 10.4.22-MariaDB
 -- versão do PHP: 7.4.27
 
@@ -37,6 +37,14 @@ CREATE TABLE `desenvolvedores` (
   `idade` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+--
+-- Extraindo dados da tabela `desenvolvedores`
+--
+
+INSERT INTO `desenvolvedores` (`id`, `devnivel`, `nome`, `sexo`, `datadenascimento`, `hobby`, `idade`) VALUES
+(2, 'junior', 'Pedro Paulo', 'M', '2022-03-07', 'Andar de Bike', 25),
+(3, 'junior', 'Lucas', 'M', '2022-03-28', 'Andar de Bicicleta', 39);
+
 -- --------------------------------------------------------
 
 --
@@ -63,12 +71,14 @@ INSERT INTO `niveis` (`idniveis`, `nivel`) VALUES
 -- Índices para tabela `desenvolvedores`
 --
 ALTER TABLE `desenvolvedores`
-  ADD UNIQUE KEY `id` (`id`);
+  ADD UNIQUE KEY `id` (`id`),
+  ADD KEY `fk_devs` (`devnivel`);
 
 --
 -- Índices para tabela `niveis`
 --
 ALTER TABLE `niveis`
+  ADD PRIMARY KEY (`nivel`),
   ADD UNIQUE KEY `idniveis` (`idniveis`);
 
 --
@@ -79,7 +89,7 @@ ALTER TABLE `niveis`
 -- AUTO_INCREMENT de tabela `desenvolvedores`
 --
 ALTER TABLE `desenvolvedores`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT de tabela `niveis`
@@ -95,7 +105,7 @@ ALTER TABLE `niveis`
 -- Limitadores para a tabela `desenvolvedores`
 --
 ALTER TABLE `desenvolvedores`
-  ADD CONSTRAINT `nivel` FOREIGN KEY (`devnivel`) REFERENCES `niveis` (`nivel`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+  ADD CONSTRAINT `fk_devs` FOREIGN KEY (`devnivel`) REFERENCES `niveis` (`nivel`) ON DELETE CASCADE ON UPDATE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
