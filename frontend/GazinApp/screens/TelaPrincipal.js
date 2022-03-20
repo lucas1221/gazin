@@ -40,7 +40,7 @@ function TelaPrincipal()
     };
 
     /*Divisão dos States Necessários */
-    // Para fazer a busca 
+    // Para fazer a busca ( Feature Futura )
     const [searchQuery, setSearchQuery] = React.useState('');
 
     const onChangeSearch = query => setSearchQuery(query);
@@ -54,24 +54,22 @@ function TelaPrincipal()
 
     // Para os Modais de Cadastro, Editar e Excluir Devs
     const {modalVisible, setModalCadastrarDevVisible} = useContext(Context);
-    const {modalEditarDevVisible, setModalEditarDevVisible} = useContext(Context);
-    const {modalExcluirDevVisible, setModalExcluirDevVisible} = useContext(Context);
+    const {modalEditarDevVisible} = useContext(Context);
+    const {modalExcluirDevVisible} = useContext(Context);
 
     // Para o Modal Cadastro de Níveis
     const {modalNiveisVisible, setModalCadastrarNivelVisible} = useContext(Context);
     // States para os Modais
-    const {modalEditarLevelVisible, setModalEditarLevelVisible} = useContext(Context);
-    const {modalExcluirLevelVisible, setModalExcluirLevelVisible} = useContext(Context);
+    const {modalEditarLevelVisible} = useContext(Context);
+    const {modalExcluirLevelVisible} = useContext(Context);
     // Para os Formularios
-    const {textEditarLevel, setTextEditarLevel} = useContext(Context);
-          
-          
+
     return(
         <PaperProvider theme={theme}>
             <Appbar style={styles.navbar}>
                 <Appbar.Content title="Sistema de Cadastro de Devs" titleStyle={styles.tituloHeader} color="white" />
             </Appbar>
-
+                
             <Searchbar
                 placeholder="Digite o nome do Desenvolvedor"
                 onChangeText={onChangeSearch}
