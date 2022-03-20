@@ -118,11 +118,11 @@ ou
 yarn install
 ``` 
 * Executar:
-* 1) Caso queira no seu Android:  
+* Caso queira no seu Android:  
 ```bash
 yarn android
 ``` 
-* 2) Versão Web achei até interessante, mas não está otimizada, o foco foi o mobile
+* Versão Web achei até interessante, mas não está otimizada, o foco foi o mobile
 ```bash
 yarn web
 ```
