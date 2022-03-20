@@ -87,7 +87,14 @@ Para o Desenvolvimento do FrontEnd, Foram escolhidas as seguintes bibliotecas:
 * React-Native-Paper ( UI )
 * React-Native-Paper-Tabs
 # Imagens do App: 
-
+![image](https://i.imgur.com/vfZbYx9.jpg)
+![image](https://i.imgur.com/8Ce52I8.jpg)
+![image](https://i.imgur.com/uzdsi7g.jpg)
+![image](https://i.imgur.com/xO5OOgD.jpg)
+![image](https://i.imgur.com/jzNTUZq.jpg)
+![image](https://i.imgur.com/6aKeBJx.jpg)
+![image](https://i.imgur.com/GUGXsiT.jpg)
+![image](https://i.imgur.com/ESCSKZc.jpg)
 ## Estrutura das Pastas do APP:
 Os diretórios do projeto estão divididos da seguinte maneira: 
 * Pasta Principal: 'gazinApp': Contém o App.js  ( só passei os Providers ) 
@@ -104,8 +111,10 @@ Foi um Excelente Desafio !!!! Agradeço pela Oportunidade
 
 ## Como executar e iniciar o APP:
 Para a inicialização da API, é necessário: 
-- [Expo](https://www.apachefriends.org/pt_br/download.html)
-- [npm](https://www.npmjs.com/) ou [yarn](https://yarnpkg.com/getting-started/install) para instalar as dependências
+- [Expo]()
+```bash
+npm install -g expo-cli
+``` 
 
 Após a instalação do Expo:
 * Instalação de Dependência: 
