@@ -13,7 +13,9 @@ Para o Desenvolvimento do Backend (API REST JSON) foi escolhida a seguinte STACK
 * Sequelize ( É uma ORM que facilita demais a manipulação/transações SQL )
 * Nodemon: Ajudou no desenvolvimento do servidor (evitando ter que derrubar o mesmo a cada alteração feita)
 
-O Servidor está configurado na porta 
+O Servidor está configurado na porta 8080, localhost
+
+Todas as requisições de GET,PUT,POST,DELETE implementadas 
 
 ## Estrutura do Banco de Dados: 
 ![image](https://i.imgur.com/FrlGUBJ.jpg)
@@ -79,8 +81,51 @@ caso haja algum problema com o banco
 
 O Frontend foi completamente desenvolvido com React Native em conjunto com o Expo ( para facilitar a execução do mesmo e evitar problemas com dependências )
 
-( Em Construção.... 🚧 ) 
+Para o Desenvolvimento do FrontEnd, Foram escolhidas as seguintes bibliotecas: 
+* React/React Native 
+* Axios ( Manipulação de dados com a API )  
+* React-Native-Paper ( UI )
+* React-Native-Paper-Tabs
+# Imagens do App: 
 
+## Estrutura das Pastas do APP:
+Os diretórios do projeto estão divididos da seguinte maneira: 
+* Pasta Principal: 'gazinApp': Contém o App.js  ( só passei os Providers ) 
+* Subpastas: 'Screens', 'Components' e 'Services' 
+* * 'Services': Contém os arquivos 'api' e 'Context' ( Extremamente uteis para configurar Hooks, Context API e a API em si )
+* * 'Components': Dividi o código em diversos Components para ficar bem organizado 
+* *  'Screens': No caso a Tela Principal e os Styles  
+* *  'Assets': Para recursos visuais, porém não foram muito utilizados 
+
+## Considerações 
+Desenvolvi usando o belo padrão Material Design, a API e a Aplicativo são um CRUD Completo e fiz muito uso de Context e Reducers. 
+Futuramente Adicionarei Features como Busca e Alterar/Remover Devs ou Níveis pelo Float Action Button
+Foi um Excelente Desafio !!!! Agradeço pela Oportunidade 
+
+## Como executar e iniciar o APP:
+Para a inicialização da API, é necessário: 
+- [Expo](https://www.apachefriends.org/pt_br/download.html)
+- [npm](https://www.npmjs.com/) ou [yarn](https://yarnpkg.com/getting-started/install) para instalar as dependências
+
+Após a instalação do Expo:
+* Instalação de Dependência: 
+```bash
+npm install
+``` 
+ou
+
+```bash
+yarn install
+``` 
+* Executar:
+* 1) Caso queira no seu Android:  
+```bash
+yarn android
+``` 
+* 2) Versão Web achei até interessante, mas não está otimizada, o foco foi o mobile
+```bash
+yarn web
+```
 ## License
 [MIT](https://choosealicense.com/licenses/mit/)
 
