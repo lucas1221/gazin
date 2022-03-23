@@ -29,7 +29,9 @@ function ModalEditarNivel() {
         });
      };
 
-
+    const clear = () => {
+        setTextEditarLevel('')
+     };
     return(
         <Modal
             animationType="fade"
@@ -42,9 +44,12 @@ function ModalEditarNivel() {
         > 
             <TouchableOpacity 
             style={styles.centeredModalView} 
-            onPress={() => setModalEditarLevelVisible(false)}
+            onPress={() => {
+                setModalEditarLevelVisible(false);
+                clear();
+            }}
             activeOpacity={10}
-            > 
+            >
                 <TouchableOpacity 
                     style={styles.modalView} 
                     onPress={() => {}} 
@@ -63,7 +68,10 @@ function ModalEditarNivel() {
                         onChangeText={textEditarLevel => setTextEditarLevel(textEditarLevel)}
                     />
                     <View style={styles.BotoesFormularios}>
-                        <TouchableOpacity style={styles.buttonCancelar} onPress={() => setModalEditarLevelVisible(false)}>
+                        <TouchableOpacity style={styles.buttonCancelar} onPress={() => {
+                            setModalEditarLevelVisible(false);
+                            clear();
+                        }}>
                             <Text style={styles.textStyle}>Cancelar</Text>
                             </TouchableOpacity>
                         <TouchableOpacity style={styles.buttonCadastrar} onPress={() => handleEditarLevel(idEditarLevel)}>

@@ -135,6 +135,10 @@ yarn android
 ```bash
 yarn web
 ```
+# Relembrando a Ordem de Inicializar: 
+* Xampp: Apache e Mysql 
+* BackEnd: Iniciar o server.js com 'nodemon server.js'
+* FrontEnd: Iniciar o App 'yarn android'
 ## License
 [MIT](https://choosealicense.com/licenses/mit/)
 

@@ -1,9 +1,10 @@
 import styles from "../screens/Styles";
 import {Modal, TouchableOpacity, View, Text} from 'react-native';
-import { TextInput, DefaultTheme } from "react-native-paper";
+import { TextInput, DefaultTheme} from "react-native-paper";
 import React, { useContext } from 'react';
 import { Context } from '../services/Context';
 import instancia from "../services/api";
+//import { white } from "react-native-paper/lib/typescript/styles/colors";
 
 function ModalEditarDev() {
    // States para os Modais de Editar e Excluir Desenvolvedores
@@ -41,6 +42,15 @@ function ModalEditarDev() {
             console.log("Erro ao Atualizar");
         });
      };
+
+     const clear = () => {
+        setTextEditarDataNascimento('')
+        setTextEditarHobby('')
+        setTextEditarIdade('')
+        setTextEditarNivel('')
+        setTextEditarNome('')
+        setTextEditarSexo('')
+     };
     
      return(
         <Modal
@@ -54,7 +64,10 @@ function ModalEditarDev() {
             }}> 
             <TouchableOpacity 
             style={styles.centeredModalView} 
-            onPress={() => setModalEditarDevVisible(false)}
+            onPress={() => {
+                setModalEditarDevVisible(false); 
+                clear();
+            }}
             activeOpacity={10}
             > 
                 <TouchableOpacity 
@@ -130,7 +143,10 @@ function ModalEditarDev() {
                     onChangeText={textEditarHobby => setTextEditarHobby(textEditarHobby)}
                     />
                         <View style={styles.BotoesFormularios}>
-                            <TouchableOpacity style={styles.buttonCancelar} onPress={() => setModalEditarDevVisible(false)}>
+                            <TouchableOpacity style={styles.buttonCancelar} onPress={() => {
+                                setModalEditarDevVisible(false);
+                                clear();
+                                }}>
                                 <Text style={styles.textStyle}>Cancelar</Text>
                                 </TouchableOpacity>
                             <TouchableOpacity style={styles.buttonCadastrar} onPress={() => handlePut(idEditarDev)}>

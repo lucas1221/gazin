@@ -22,6 +22,7 @@ function ModalExcluirDev() {
                 console.log("Erro ao Deletar");
             });
         };
+    
     return(
         <Modal
             animationType="fade"

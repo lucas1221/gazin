@@ -36,8 +36,16 @@ function ModalCadastrarDev() {
             .catch(function (error) {
                 console.log("Erro ao Cadastrar");
             });
-         };
         
+    };
+    const clear = () => {
+            setTextDataNascimento('')
+            setTextHobby('')
+            setTextIdade('')
+            setTextNivel('')
+            setTextNome('')
+            setTextSexo('')
+         };
     return(
         <Modal
             animationType="fade"
@@ -50,7 +58,10 @@ function ModalCadastrarDev() {
             }}> 
             <TouchableOpacity 
             style={styles.centeredModalView} 
-            onPress={() => setModalCadastrarDevVisible(false)}
+            onPress={() => {
+                setModalCadastrarDevVisible(false);
+                clear();
+            }}
             activeOpacity={10}
             > 
                 <TouchableOpacity 
@@ -126,7 +137,10 @@ function ModalCadastrarDev() {
                     onChangeText={textHobby => setTextHobby(textHobby)}
                     />
                     <View style={styles.BotoesFormularios}>
-                        <TouchableOpacity style={styles.buttonCancelar} onPress={() => setModalCadastrarDevVisible(false)}>
+                        <TouchableOpacity style={styles.buttonCancelar} onPress={() => {
+                            setModalCadastrarDevVisible(false);
+                            clear();
+                        }}>
                             <Text style={styles.textStyle}>Cancelar</Text>
                             </TouchableOpacity>
                         <TouchableOpacity style={styles.buttonCadastrar} onPress={handlePost}>
